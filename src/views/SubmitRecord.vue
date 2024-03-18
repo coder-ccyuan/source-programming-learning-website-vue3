@@ -47,7 +47,7 @@
 
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import { QuestionSubmitControllerService } from "../../generated";
+import { QuestionSubmitControllerService } from "../../questionApi";
 
 const columns = [
   {
@@ -114,6 +114,7 @@ const onPageChange = () => {
   align-items: center;
   display: inline-flex;
 }
+
 #rc {
   margin: 0 auto;
   max-width: 1024px;

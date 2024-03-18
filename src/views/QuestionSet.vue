@@ -67,8 +67,8 @@
 
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import { QuestionControllerService } from "../../generated";
 import { useRouter } from "vue-router";
+import { QuestionControllerService } from "../../questionApi";
 
 const columns = [
   {

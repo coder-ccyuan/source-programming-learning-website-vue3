@@ -51,9 +51,9 @@
 
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import { QuestionControllerService } from "../../generated";
 import UpdateQuestion from "@/components/UpdateQuestion.vue";
 import { Message } from "@arco-design/web-vue";
+import { QuestionControllerService } from "../../questionApi";
 
 const columns = [
   {

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import MDEditor from "@/components/MDEditor.vue";
 import { nextTick, reactive, ref } from "vue";
-import { QuestionControllerService } from "../../generated";
 import { Message } from "@arco-design/web-vue";
+import { QuestionControllerService } from "../../questionApi";
 
 const form = reactive({
   answer: "",

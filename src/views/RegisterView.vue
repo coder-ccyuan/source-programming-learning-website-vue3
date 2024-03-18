@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { UserControllerService, UserRegisterRequest } from "../../generated";
 import { useRouter } from "vue-router";
+import { UserControllerService, UserRegisterRequest } from "../../userApi";
 
 const form = reactive({
   userAccount: "",
@@ -45,9 +45,9 @@ const onHandleSubmit = async () => {
           <a-button html-type="submit" type="primary">注册</a-button>
         </a-col>
         <a-col :span="10">
-          <a-button type="outline"
-            ><router-link to="/login">登录</router-link></a-button
-          >
+          <a-button type="outline">
+            <router-link to="/login">登录</router-link>
+          </a-button>
         </a-col>
       </a-row>
     </a-form>

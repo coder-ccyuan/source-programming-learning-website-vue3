@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { defineProps, reactive, ref } from "vue";
+import { Message } from "@arco-design/web-vue";
+import { useRouter } from "vue-router";
 import {
   InterfaceInformationControllerService,
   InterfaceInvokeTestRequest,
-} from "../../../api";
-import { Message } from "@arco-design/web-vue";
-import { useRouter } from "vue-router";
+} from "../../../interfaceApi";
 
 /**
  * 在线调用参数
@@ -100,7 +100,7 @@ const onDelete = async () => {
   </a-row>
   <a-row class="row">
     <a-col :span="2">
-      <a-button type="primary" aria-readonly="true">Method</a-button>
+      <a-button aria-readonly="true" type="primary">Method</a-button>
     </a-col>
     <a-col :span="20">
       <a-input v-model="data.method" />
@@ -131,12 +131,12 @@ const onDelete = async () => {
   <a-row class="row">
     <a-button type="outline">在线测试</a-button>
     <a-textarea
-      :default-value="props.item.requestHead"
       v-model="invokeP.requestParams"
       :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
+      :default-value="props.item.requestHead"
       style="margin-top: 20px"
     />
     <a-button type="text" @click="onlineInvoke">
@@ -174,36 +174,36 @@ const onDelete = async () => {
   <a-row class="row">
     <a-button type="outline">上传SDK</a-button>
     <a-upload
-      draggable
-      action="
-http://localhost:8092/interfaceInfo/uploadSDK"
-      :with-credentials="true"
       :data="{
         id: data.id,
       }"
+      :with-credentials="true"
+      action="
+http://localhost:8101/api/API/interfaceInfo/uploadSDK"
+      draggable
     />
   </a-row>
   <a-row class="row">
     <a-button
-      type="primary"
       status="success"
       style="margin: 0 10px"
-      @click="onSava"
-      >保存</a-button
-    >
-    <a-button status="success" style="margin: 0 10px" @click="online"
-      >上线</a-button
-    >
-    <a-button status="danger" style="margin: 0 10px" @click="offline"
-      >下线</a-button
-    >
-    <a-button
       type="primary"
+      @click="onSava"
+      >保存
+    </a-button>
+    <a-button status="success" style="margin: 0 10px" @click="online"
+      >上线
+    </a-button>
+    <a-button status="danger" style="margin: 0 10px" @click="offline"
+      >下线
+    </a-button>
+    <a-button
       status="danger"
       style="margin: 0 10px"
+      type="primary"
       @click="onDelete"
-      >删除</a-button
-    >
+      >删除
+    </a-button>
   </a-row>
 </template>
 

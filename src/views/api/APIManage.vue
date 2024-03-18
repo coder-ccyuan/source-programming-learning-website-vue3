@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import { InterfaceInformationControllerService } from "../../../api";
+<script lang="ts" setup>
 import { onMounted, reactive, ref } from "vue";
 import APIEdit from "@/views/api/APIEdit.vue";
+import { InterfaceInformationControllerService } from "../../../interfaceApi";
 
 const queryP = reactive({
   method: "",
@@ -44,8 +44,8 @@ onMounted(() => {
       <a-anchor>
         <a-anchor-link
           v-for="(item, index) in data"
-          :href="'#' + item.id"
           :key="index"
+          :href="'#' + item.id"
         >
           {{ item.name }}
         </a-anchor-link>
@@ -54,9 +54,9 @@ onMounted(() => {
     <a-collapse>
       <a-collapse-item
         v-for="(item, index) in data"
+        :id="item.id"
         :key="index"
         :header="item.name"
-        :id="item.id"
       >
         <APIEdit :item="item"></APIEdit>
       </a-collapse-item>
@@ -69,6 +69,7 @@ onMounted(() => {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .anchor {
   float: left;
   max-width: max-content;

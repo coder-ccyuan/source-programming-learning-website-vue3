@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import MDEditor from "@/components/MDEditor.vue";
 import { defineProps, nextTick, reactive, ref, watchEffect } from "vue";
-import { QuestionControllerService } from "../../generated";
+import { QuestionControllerService } from "../../questionApi";
 
 const props = defineProps(["record"]);
 const form = reactive({

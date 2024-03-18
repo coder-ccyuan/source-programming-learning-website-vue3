@@ -3,13 +3,13 @@ import { onMounted, reactive, ref } from "vue";
 import CodeEditor from "@/components/CodeEditor.vue";
 import OnlyReadMD from "@/components/OnlyReadMD.vue";
 import userStore from "@/store/userStore";
+import { Message } from "@arco-design/web-vue";
+import { useRoute } from "vue-router";
 import {
   QuestionControllerService,
   QuestionSubmitControllerService,
   QuestionVO,
-} from "../../generated";
-import { Message } from "@arco-design/web-vue";
-import { useRoute } from "vue-router";
+} from "../../questionApi";
 
 const route = useRoute();
 const id = route.query.id as unknown as number;
@@ -60,22 +60,28 @@ onMounted(() => {
   question.judgeConfig = props.record.judgeConfig;
   question.tags = props.record.tags;
 });*/
-
+const getQS = async (id: number) => {
+  var res = await QuestionSubmitControllerService.getQuestionVoByIdUsingGet1(
+    id
+  );
+  var judgeInfo = res.data.judgeInfo;
+  if (judgeInfo == null) {
+    alert("编译失败");
+    return;
+  }
+  responseContent.memories = judgeInfo.memories;
+  responseContent.times = judgeInfo.times;
+  responseContent.messages = judgeInfo.messages;
+  visible.value = true;
+};
 const onSubmit = async () => {
   let res = await QuestionSubmitControllerService.addQuestionSubmitUsingPost(
     form
   );
   if (res.code === 0) {
     Message.success("提交成功");
-    var judgeInfo = res.data.judgeInfo;
-    if (judgeInfo !== null) {
-      responseContent.memories = judgeInfo.memories;
-      responseContent.times = judgeInfo.times;
-      responseContent.messages = judgeInfo.messages;
-      visible.value = true;
-    } else {
-      alert("编译失败");
-    }
+    const judgeInfo = res.data.judgeInfo;
+    getQS(res.data);
   } else {
     alert("提交失败" + res.message);
   }
@@ -128,9 +134,16 @@ const handleOk = () => {
         <a-button style="float: right" type="primary" @click="onSubmit"
           >提交
         </a-button>
-      </div></a-layout-content
-    >
+      </div>
+    </a-layout-content>
   </a-layout>
+  <a-modal v-model:visible="visible" @ok="handleOk">
+    <template #title> 判题结果</template>
+    <div v-for="(item, index) in responseContent.times" :key="index">
+      time: {{ item + "---" }} memory: null --- result:
+      {{ responseContent.messages[index] }} <br />
+    </div>
+  </a-modal>
 </template>
 
 <style scoped>
@@ -139,6 +152,7 @@ const handleOk = () => {
   max-width: 60%;
   height: 600px;
 }
+
 .sider {
   margin-left: 20px;
 }

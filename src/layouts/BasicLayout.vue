@@ -14,7 +14,7 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
       <a-layout-footer class="foot">
         <a-divider></a-divider>
         <icon-github style="font-size: 20px" />
-        <a-link href="https://github.com/coder-ccyuan/OJ" icon> by cpy </a-link>
+        <a-link href="https://github.com/coder-ccyuan/OJ" icon> by cpy</a-link>
       </a-layout-footer>
     </a-layout>
   </div>

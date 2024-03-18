@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { LoginUserVO, UserControllerService } from "../../generated";
+import { LoginUserVO, UserControllerService } from "../../userApi";
 
 const userStore = defineStore("user", {
   state: () => {
@@ -20,7 +20,7 @@ const userStore = defineStore("user", {
   },
   actions: {
     async getLoginUser() {
-      const res = await UserControllerService.getLoginUserUsingGet();
+      const res = await UserControllerService.getLoginUserUsingGet1();
       if (res.code === 0) {
         this.user = { ...res.data };
         this.token = "fdsaSf";

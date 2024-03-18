@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { routes } from "@/router/routes";
 import { useRouter } from "vue-router";
 import userStore from "../store/userStore";
-import { UserControllerService } from "../../generated";
+import { UserControllerService } from "../../userApi";
 
 const router = useRouter();
 const selectedKeys = ref(["/"]);

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { reactive } from "vue";
-import { UserControllerService, UserLoginRequest } from "../../generated";
 import { useRouter } from "vue-router";
+import { UserControllerService, UserLoginRequest } from "../../userApi";
 
 const form = reactive({
   userAccount: "",
@@ -22,10 +22,10 @@ const onHandleSubmit = async () => {
 <template>
   <div id="loginView">
     <a-image
-      src="https://th.bing.com/th/id/OIG1.qQYQn6EGN65jlfKRAlsp?pid=ImgGn"
-      height="200px"
-      description="source"
       :preview="false"
+      description="source"
+      height="200px"
+      src="https://th.bing.com/th/id/OIG1.qQYQn6EGN65jlfKRAlsp?pid=ImgGn"
     ></a-image>
     <h1>用户登录</h1>
     <a-form :model="form" :style="{ width: '550px' }" @submit="onHandleSubmit">
@@ -44,9 +44,9 @@ const onHandleSubmit = async () => {
           <a-button html-type="submit" type="primary">登录</a-button>
         </a-col>
         <a-col :span="10">
-          <a-button type="outline"
-            ><router-link to="/register">注册</router-link></a-button
-          >
+          <a-button type="outline">
+            <router-link to="/register">注册</router-link>
+          </a-button>
         </a-col>
       </a-row>
     </a-form>

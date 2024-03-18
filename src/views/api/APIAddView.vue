@@ -1,8 +1,8 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { reactive } from "vue";
-import { InterfaceInformationControllerService } from "../../../api";
 import { Message } from "@arco-design/web-vue";
 import { useRouter } from "vue-router";
+import { InterfaceInformationControllerService } from "../../../interfaceApi";
 
 /**
  * 在线调用参数
@@ -54,7 +54,7 @@ const onAdd = async () => {
     </a-row>
     <a-row class="row">
       <a-col :span="2">
-        <a-button type="primary" aria-readonly="true">Method</a-button>
+        <a-button aria-readonly="true" type="primary">Method</a-button>
       </a-col>
       <a-col :span="20">
         <a-input v-model="data.method" />
@@ -106,16 +106,16 @@ const onAdd = async () => {
     </a-row>
     <a-row class="row">
       <a-button type="outline">上传SDK</a-button>
-      <a-upload draggable action="/" />
+      <a-upload action="/" draggable />
     </a-row>
     <a-row class="row">
       <a-button
-        type="primary"
         status="success"
         style="margin: 0 10px"
+        type="primary"
         @click="onAdd"
-        >添加</a-button
-      >
+        >添加
+      </a-button>
     </a-row>
   </div>
 </template>
@@ -125,6 +125,7 @@ const onAdd = async () => {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 #apiAdd {
   max-width: 1024px;
   margin: 0 auto;

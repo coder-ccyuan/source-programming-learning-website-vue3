@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { onMounted, reactive, ref } from "vue";
 import userStore from "@/store/userStore";
 
@@ -49,11 +49,11 @@ onMounted(() => {
 </script>
 <template>
   <a-descriptions
-    style="margin-top: 20px"
+    :column="1"
     :data="data"
     :size="'large'"
     :title="title"
-    :column="1"
+    style="margin-top: 20px"
   />
 </template>
 <style scoped></style>

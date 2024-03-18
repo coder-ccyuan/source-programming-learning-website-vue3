@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { defineProps, reactive, ref } from "vue";
+import { Message } from "@arco-design/web-vue";
 import {
   InterfaceInformationControllerService,
   InterfaceInvokeTestRequest,
-} from "../../../api";
-import { Message } from "@arco-design/web-vue";
+} from "../../../interfaceApi";
 
 /**
  * 在线调用参数
@@ -24,7 +24,7 @@ const onlineInvoke = async () => {
   let res = await InterfaceInformationControllerService.invokeUsingPost(
     invokeP
   );
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("调用成功");
     response.value = res.data;
   } else {
@@ -36,26 +36,26 @@ const onlineInvoke = async () => {
 <template>
   <a-row class="row">
     <a-col :span="2">
-      <a-button type="primary" aria-readonly="true">Name</a-button>
+      <a-button aria-readonly="true" type="primary">Name</a-button>
     </a-col>
     <a-col :span="20">
-      <a-input :readonly="true" :default-value="props.item.name" />
+      <a-input :default-value="props.item.name" :readonly="true" />
     </a-col>
   </a-row>
   <a-row class="row">
     <a-col :span="2">
-      <a-button type="primary" aria-readonly="true">URL</a-button>
+      <a-button aria-readonly="true" type="primary">URL</a-button>
     </a-col>
     <a-col :span="20">
-      <a-input :readonly="true" :default-value="props.item.url" />
+      <a-input :default-value="props.item.url" :readonly="true" />
     </a-col>
   </a-row>
   <a-row class="row">
     <a-col :span="2">
-      <a-button type="primary" aria-readonly="true">Method</a-button>
+      <a-button aria-readonly="true" type="primary">Method</a-button>
     </a-col>
     <a-col :span="20">
-      <a-input :readonly="true" :default-value="props.item.method" />
+      <a-input :default-value="props.item.method" :readonly="true" />
     </a-col>
   </a-row>
   <a-row class="row">
@@ -73,12 +73,12 @@ const onlineInvoke = async () => {
   <a-row class="row">
     <a-button type="outline">在线测试</a-button>
     <a-textarea
-      :default-value="props.item.requestHead"
       v-model="invokeP.requestParams"
       :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
+      :default-value="props.item.requestHead"
       style="margin-top: 20px"
     />
     <a-button type="text" @click="onlineInvoke">
@@ -108,11 +108,12 @@ const onlineInvoke = async () => {
   </a-row>
   <a-link
     :href="
-      'http://localhost:8092/interfaceInfo/downloadSDK?id=' + props.item.id
+      'http://localhost:8101/api/API/interfaceInfo/downloadSDK?id=' +
+      props.item.id
     "
     icon
-    >下载该API的sdk jar包</a-link
-  >
+    >下载该API的sdk jar包
+  </a-link>
 </template>
 
 <style scoped>

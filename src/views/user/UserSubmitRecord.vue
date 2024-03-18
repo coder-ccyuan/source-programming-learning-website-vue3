@@ -44,7 +44,7 @@
 
 <script setup>
 import { onMounted, reactive, ref } from "vue";
-import { QuestionSubmitControllerService } from "../../../generated";
+import { QuestionSubmitControllerService } from "../../../questionApi";
 
 const columns = [
   {
