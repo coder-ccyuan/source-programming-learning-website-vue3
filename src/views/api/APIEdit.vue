@@ -26,7 +26,7 @@ const onlineInvoke = async () => {
   let res = await InterfaceInformationControllerService.invokeUsingPost(
     invokeP
   );
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("调用成功");
     response.value = res.data;
   } else {
@@ -51,7 +51,7 @@ let data = reactive({
 });
 const onSava = async () => {
   let res = await InterfaceInformationControllerService.updateUsingPost(data);
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("保存成功");
   } else {
     Message.error("保存失败");
@@ -60,7 +60,7 @@ const onSava = async () => {
 //
 const online = async () => {
   let res = await InterfaceInformationControllerService.onlineUsingPost(data);
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("上线成功");
   } else {
     Message.error("上线失败");
@@ -69,7 +69,7 @@ const online = async () => {
 };
 const offline = async () => {
   let res = await InterfaceInformationControllerService.offlineUsingPost(data);
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("下线成功");
   } else {
     Message.error("下线失败");
@@ -78,7 +78,7 @@ const offline = async () => {
 };
 const onDelete = async () => {
   let res = await InterfaceInformationControllerService.deleteUsingPost(data);
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("删除成功");
     router.go(0);
   } else {

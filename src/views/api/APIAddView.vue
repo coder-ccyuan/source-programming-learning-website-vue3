@@ -21,7 +21,7 @@ let data = reactive({
 });
 const onAdd = async () => {
   let res = await InterfaceInformationControllerService.addUsingPost(data);
-  if (res.code === 20000) {
+  if (res.code === 0) {
     Message.success("添加成功");
     await router.push("/api");
     router.go(0);
