@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import MDEditor from "@/components/MDEditor.vue";
-import { nextTick, reactive, ref } from "vue";
-import { Message } from "@arco-design/web-vue";
-import { QuestionControllerService } from "../../questionApi";
+import {nextTick, reactive, ref} from "vue";
+import {Message} from "@arco-design/web-vue";
+import {QuestionControllerService} from "../../api";
 
 const form = reactive({
   answer: "",
@@ -108,41 +108,41 @@ const onsubmit = async () => {
     <a-form :model="form" :style="{ width: '600px' }">
       <h3>标题</h3>
       <a-form-item>
-        <a-input v-model="form.title" placeholder="输入标题" />
+        <a-input v-model="form.title" placeholder="输入标题"/>
       </a-form-item>
       <h3>标签</h3>
       <a-form-item>
         <a-space wrap>
           <a-tag
-            v-for="(tag, index) of form.tags"
-            :key="tag"
-            :closable="index !== -1"
-            :color="colors[index]"
-            @close="handleRemove(tag)"
+              v-for="(tag, index) of form.tags"
+              :key="tag"
+              :closable="index !== -1"
+              :color="colors[index]"
+              @close="handleRemove(tag)"
           >
             {{ tag }}
           </a-tag>
           <a-input
-            v-if="showInput"
-            ref="inputRef"
-            v-model.trim="inputVal"
-            :style="{ width: '90px' }"
-            size="mini"
-            @blur="handleAddTag"
-            @keyup.enter="handleAddTag"
+              v-if="showInput"
+              ref="inputRef"
+              v-model.trim="inputVal"
+              :style="{ width: '90px' }"
+              size="mini"
+              @blur="handleAddTag"
+              @keyup.enter="handleAddTag"
           />
           <a-tag
-            v-else
-            :style="{
+              v-else
+              :style="{
               width: '90px',
               backgroundColor: 'var(--color-fill-2)',
               border: '1px dashed var(--color-fill-3)',
               cursor: 'pointer',
             }"
-            @click="handleEdit"
+              @click="handleEdit"
           >
             <template #icon>
-              <icon-plus />
+              <icon-plus/>
             </template>
             Add Tag
           </a-tag>
@@ -151,10 +151,10 @@ const onsubmit = async () => {
       <h3>题目限制</h3>
       时间限制：
       <a-input-number v-model="form.judgeConfig.timeLimit"></a-input-number>
-      <br />
+      <br/>
       内存限制：
       <a-input-number v-model="form.judgeConfig.memoryLimit"></a-input-number>
-      <br />
+      <br/>
       堆栈限制：
       <a-input-number v-model="form.judgeConfig.stackLimit"></a-input-number>
       <h3>内容</h3>
@@ -163,21 +163,21 @@ const onsubmit = async () => {
       <MDEditor :onChange="onChangeAnswer" :value="form.answer"></MDEditor>
       <h3>判例</h3>
       <a-form-item
-        v-for="(item, index) in form.judgeCase"
-        :key="index"
-        :field="`judgeCase[${index}]`"
-        :label="'判例' + index"
+          v-for="(item, index) in form.judgeCase"
+          :key="index"
+          :field="`judgeCase[${index}]`"
+          :label="'判例' + index"
       >
         输入
-        <a-input v-model="item.input" placeholder="输入判例" />
+        <a-input v-model="item.input" placeholder="输入判例"/>
         输出
-        <a-input v-model="item.output" placeholder="输入判例" />
+        <a-input v-model="item.output" placeholder="输入判例"/>
         <a-button status="danger" @click="handleDelete(index)">删除</a-button>
       </a-form-item>
       <a-button status="normal" type="text" @click="handleAddCase"
-        >添加判例
+      >添加判例
       </a-button>
-      <br />
+      <br/>
       <a-button type="primary" @click="onsubmit">提交</a-button>
     </a-form>
   </div>

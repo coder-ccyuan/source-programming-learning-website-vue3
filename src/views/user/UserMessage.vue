@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from "vue";
+import {onMounted, reactive, ref} from "vue";
 import userStore from "@/store/userStore";
 
 const title = ref("个人信息");
@@ -49,11 +49,11 @@ onMounted(() => {
 </script>
 <template>
   <a-descriptions
-    :column="1"
-    :data="data"
-    :size="'large'"
-    :title="title"
-    style="margin-top: 20px"
+      :column="1"
+      :data="data"
+      :size="'large'"
+      :title="title"
+      style="margin-top: 20px"
   />
 </template>
 <style scoped></style>

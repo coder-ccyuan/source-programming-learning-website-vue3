@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { ref } from "vue";
-import { routes } from "@/router/routes";
-import { useRouter } from "vue-router";
+import {ref} from "vue";
+import {routes} from "@/router/routes";
+import {useRouter} from "vue-router";
 import userStore from "../store/userStore";
-import { UserControllerService } from "../../userApi";
+import {UserControllerService} from "../../userApi";
 
 const router = useRouter();
 const selectedKeys = ref(["/"]);
@@ -54,28 +54,28 @@ router.afterEach((to, from, next) => {
 <template>
   <!--  align 样式居中 wrap 关闭换行-->
   <a-row
-    id="globalHeader"
-    :wrap="false"
-    align="center"
-    style="margin-bottom: 16px"
+      id="globalHeader"
+      :wrap="false"
+      align="center"
+      style="margin-bottom: 16px"
   >
     <a-col flex="auto">
       <div>
         <a-menu
-          v-model:selected-keys="selectedKeys"
-          mode="horizontal"
-          @menu-item-click="menuItemClick"
+            v-model:selected-keys="selectedKeys"
+            mode="horizontal"
+            @menu-item-click="menuItemClick"
         >
           <a-menu-item
-            :key="0"
-            :style="{ padding: 0, marginRight: '30px' }"
-            disabled
+              :key="0"
+              :style="{ padding: 0, marginRight: '30px' }"
+              disabled
           >
             <div class="title-bar">
               <img
-                alt="logo"
-                class="logo"
-                src="https://th.bing.com/th/id/OIG1.qQYQn6EGN65jlfKRAlsp?pid=ImgGn"
+                  alt="logo"
+                  class="logo"
+                  src="https://th.bing.com/th/id/OIG1.qQYQn6EGN65jlfKRAlsp?pid=ImgGn"
               />
               <div class="title">source 编程开发学习站</div>
             </div>
@@ -90,7 +90,7 @@ router.afterEach((to, from, next) => {
       <a-dropdown @select="onHandleSelect">
         <a-avatar>
           <img :src="userStore().user.userAvatar" alt="头像"
-        /></a-avatar>
+          /></a-avatar>
         {{ userStore().user.userName }}
         <template #content>
           <a-doption v-if="userStore().isLogin">登出</a-doption>

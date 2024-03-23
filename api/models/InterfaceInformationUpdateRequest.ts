@@ -4,10 +4,13 @@
 /* eslint-disable */
 export type InterfaceInformationUpdateRequest = {
     id?: number;
+    introduce?: string;
+    maven?: string;
     method?: string;
     name?: string;
     requestHead?: string;
     responseHead?: string;
+    sdkURL?: string;
     status?: number;
     url?: string;
     userId?: number;

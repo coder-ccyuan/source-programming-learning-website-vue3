@@ -3,48 +3,48 @@
     <template #tag="{ record }">
       <a-space>
         <a-tag
-          v-for="(tag, index) in record.questionVO.tags"
-          :key="index"
-          color="green"
-          >{{ tag }}
+            v-for="(tag, index) in record.questionVO.tags"
+            :key="index"
+            color="green"
+        >{{ tag }}
         </a-tag>
       </a-space>
     </template>
     <template #status="{ record }">
       <a-space>
         <a-tag
-          :color="
+            :color="
             record.status === 2
               ? 'green'
               : record.status === 3
               ? 'red'
               : 'orange'
           "
-          >{{
+        >{{
             record.status === 0
-              ? "待判题"
-              : record.status === 1
-              ? "判题中"
-              : record.status === 2
-              ? "成功"
-              : "失败"
+                ? "待判题"
+                : record.status === 1
+                    ? "判题中"
+                    : record.status === 2
+                        ? "成功"
+                        : "失败"
           }}
         </a-tag>
       </a-space>
     </template>
   </a-table>
   <a-pagination
-    v-model:current="pageParameters.current"
-    v-model:total="pageParameters.total"
-    :page-size="pageParameters.pageSize"
-    :show-total="true"
-    @change="onPageChange()"
+      v-model:current="pageParameters.current"
+      v-model:total="pageParameters.total"
+      :page-size="pageParameters.pageSize"
+      :show-total="true"
+      @change="onPageChange()"
   />
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from "vue";
-import { QuestionSubmitControllerService } from "../../../questionApi";
+import {onMounted, reactive, ref} from "vue";
+import {QuestionSubmitControllerService} from "../../../questionApi";
 
 const columns = [
   {
@@ -87,10 +87,10 @@ const SearchParameters = reactive({
 });
 const loadDate = async () => {
   const res =
-    await QuestionSubmitControllerService.myListQuestionSubmitVoByPageUsingGet(
-      SearchParameters.current,
-      SearchParameters.pageSize
-    );
+      await QuestionSubmitControllerService.myListQuestionSubmitVoByPageUsingGet(
+          SearchParameters.current,
+          SearchParameters.pageSize
+      );
   data.value = res.data.records;
   pageParameters.total = res.data.total;
   pageParameters.current = Number.parseInt(res.data.current);

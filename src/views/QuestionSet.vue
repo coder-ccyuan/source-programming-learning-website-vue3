@@ -3,23 +3,23 @@
     <a-space class="search">
       题目：
       <a-mention
-        v-model="SearchParameters.title"
-        :style="{ width: '380px' }"
-        placeholder="输入题目标题"
+          v-model="SearchParameters.title"
+          :style="{ width: '380px' }"
+          placeholder="输入题目标题"
       />
       标签：
       <a-input-tag
-        v-model:model-value="SearchParameters.tags"
-        :max-tag-count="5"
-        :style="{ width: '380px' }"
-        allow-clear
-        placeholder="输入标签（回车）"
+          v-model:model-value="SearchParameters.tags"
+          :max-tag-count="5"
+          :style="{ width: '380px' }"
+          allow-clear
+          placeholder="输入标签（回车）"
       />
       <a-button type="primary" @click="onSearch">
-        <icon-search />
+        <icon-search/>
       </a-button>
     </a-space>
-    <a-divider />
+    <a-divider/>
     <a-table :columns="columns" :data="data" :pagination="false">
       <template #optional="{ record }">
         <a-button type="primary" @click="onDoQuestion(record)"> 做题</a-button>
@@ -27,9 +27,9 @@
       <template #tag="{ record }">
         <a-space>
           <a-tag
-            v-for="(tag, index) in record.tags"
-            :key="index"
-            :color="
+              v-for="(tag, index) in record.tags"
+              :key="index"
+              :color="
               tag === '简单'
                 ? 'green'
                 : tag === '中等'
@@ -38,7 +38,7 @@
                 ? 'red'
                 : 'cyan'
             "
-            >{{ tag }}
+          >{{ tag }}
           </a-tag>
         </a-space>
       </template>
@@ -56,19 +56,19 @@
     <!--    </div>-->
     <!--  </a-modal>-->
     <a-pagination
-      v-model:current="pageParameters.current"
-      v-model:total="pageParameters.total"
-      :page-size="pageParameters.pageSize"
-      :show-total="true"
-      @change="onPageChange()"
+        v-model:current="pageParameters.current"
+        v-model:total="pageParameters.total"
+        :page-size="pageParameters.pageSize"
+        :show-total="true"
+        @change="onPageChange()"
     />
   </div>
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from "vue";
-import { useRouter } from "vue-router";
-import { QuestionControllerService } from "../../questionApi";
+import {onMounted, reactive, ref} from "vue";
+import {useRouter} from "vue-router";
+import {QuestionControllerService} from "../../questionApi";
 
 const columns = [
   {
@@ -113,7 +113,7 @@ const SearchParameters = reactive({
 });
 const loadDate = async () => {
   const res = await QuestionControllerService.listQuestionVoByPageUsingPost(
-    SearchParameters
+      SearchParameters
   );
   data.value = res.data.records;
   pageParameters.total = res.data.total;

@@ -5,12 +5,15 @@
 export type InterfaceInformation = {
     createTime?: string;
     id?: number;
+    introduce?: string;
     isDelete?: number;
+    maven?: string;
     method?: string;
     name?: string;
     paramName?: string;
     requestHead?: string;
     responseHead?: string;
+    sdkURL?: string;
     status?: number;
     updateTime?: string;
     url?: string;

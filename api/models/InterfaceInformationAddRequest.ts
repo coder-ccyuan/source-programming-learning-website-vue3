@@ -5,11 +5,14 @@
 export type InterfaceInformationAddRequest = {
     createTime?: string;
     id?: number;
+    introduce?: string;
     isDelete?: number;
+    maven?: string;
     method?: string;
     name?: string;
     requestHead?: string;
     responseHead?: string;
+    sdkURL?: string;
     status?: number;
     updateTime?: string;
     url?: string;

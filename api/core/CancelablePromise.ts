@@ -1,6 +1,7 @@
 /* generated using openapi-typescript-codegen -- do no edit */
 /* istanbul ignore file */
 /* tslint:disable */
+
 /* eslint-disable */
 export class CancelError extends Error {
 
@@ -85,9 +86,13 @@ export class CancelablePromise<T> implements Promise<T> {
         });
     }
 
-     get [Symbol.toStringTag]() {
-            return "Cancellable Promise";
-     }
+    get [Symbol.toStringTag]() {
+        return "Cancellable Promise";
+    }
+
+    public get isCancelled(): boolean {
+        return this.#isCancelled;
+    }
 
     public then<TResult1 = T, TResult2 = never>(
         onFulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | null,
@@ -123,9 +128,5 @@ export class CancelablePromise<T> implements Promise<T> {
         }
         this.#cancelHandlers.length = 0;
         if (this.#reject) this.#reject(new CancelError('Request aborted'));
-    }
-
-    public get isCancelled(): boolean {
-        return this.#isCancelled;
     }
 }

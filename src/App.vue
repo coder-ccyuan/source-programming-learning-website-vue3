@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <basic-layout />
+    <basic-layout/>
   </div>
 </template>
 
@@ -10,7 +10,7 @@
 </style>
 <script lang="ts" setup>
 import BasicLayout from "@/layouts/BasicLayout.vue";
-import { onMounted } from "vue";
+import {onMounted} from "vue";
 import userStore from "@/store/userStore";
 
 /**ort { onMounted } from "vue

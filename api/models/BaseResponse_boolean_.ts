@@ -5,7 +5,6 @@
 export type BaseResponse_boolean_ = {
     code?: number;
     data?: boolean;
-    description?: string;
     message?: string;
 };
 

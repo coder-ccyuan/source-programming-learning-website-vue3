@@ -2,14 +2,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BaseResponse_boolean_ } from '../models/BaseResponse_boolean_';
-import type { BaseResponse_List_UserInterfaceInfo_ } from '../models/BaseResponse_List_UserInterfaceInfo_';
-import type { DeleteRequest } from '../models/DeleteRequest';
-import type { UserInterfaceInfoAddRequest } from '../models/UserInterfaceInfoAddRequest';
-import type { UserInterfaceInfoUpdateRequest } from '../models/UserInterfaceInfoUpdateRequest';
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type {BaseResponse_boolean_} from '../models/BaseResponse_boolean_';
+import type {BaseResponse_List_UserInterfaceInfo_} from '../models/BaseResponse_List_UserInterfaceInfo_';
+import type {DeleteRequest} from '../models/DeleteRequest';
+import type {UserInterfaceInfoAddRequest} from '../models/UserInterfaceInfoAddRequest';
+import type {UserInterfaceInfoUpdateRequest} from '../models/UserInterfaceInfoUpdateRequest';
+import type {CancelablePromise} from '../core/CancelablePromise';
+import {OpenAPI} from '../core/OpenAPI';
+import {request as __request} from '../core/request';
+
 export class UserInterfaceInfoControllerService {
     /**
      * add
@@ -23,7 +24,7 @@ export class UserInterfaceInfoControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/user_Interface/add',
+            url: '/api/user_Interface/add',
             body: addRequest,
             errors: {
                 401: `Unauthorized`,
@@ -32,6 +33,7 @@ export class UserInterfaceInfoControllerService {
             },
         });
     }
+
     /**
      * delete
      * @param deleteRequest deleteRequest
@@ -44,7 +46,7 @@ export class UserInterfaceInfoControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/user_Interface/delete',
+            url: '/api/user_Interface/delete',
             body: deleteRequest,
             errors: {
                 401: `Unauthorized`,
@@ -53,6 +55,7 @@ export class UserInterfaceInfoControllerService {
             },
         });
     }
+
     /**
      * query
      * @param id
@@ -62,7 +65,7 @@ export class UserInterfaceInfoControllerService {
      * @returns BaseResponse_List_UserInterfaceInfo_ OK
      * @throws ApiError
      */
-    public static queryUsingGet2(
+    public static queryUsingGet1(
         id?: number,
         interfaceId?: number,
         status?: number,
@@ -70,7 +73,7 @@ export class UserInterfaceInfoControllerService {
     ): CancelablePromise<BaseResponse_List_UserInterfaceInfo_> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/user_Interface/query',
+            url: '/api/user_Interface/query',
             query: {
                 'id': id,
                 'interfaceId': interfaceId,
@@ -84,6 +87,7 @@ export class UserInterfaceInfoControllerService {
             },
         });
     }
+
     /**
      * update
      * @param updateRequest updateRequest
@@ -96,7 +100,7 @@ export class UserInterfaceInfoControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/user_Interface/update',
+            url: '/api/user_Interface/update',
             body: updateRequest,
             errors: {
                 401: `Unauthorized`,

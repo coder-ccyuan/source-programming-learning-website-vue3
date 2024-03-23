@@ -1,11 +1,8 @@
 <script lang="ts" setup>
-import { defineProps, reactive, ref } from "vue";
-import { Message } from "@arco-design/web-vue";
-import { useRouter } from "vue-router";
-import {
-  InterfaceInformationControllerService,
-  InterfaceInvokeTestRequest,
-} from "../../../interfaceApi";
+import {defineProps, reactive, ref} from "vue";
+import {Message} from "@arco-design/web-vue";
+import {useRouter} from "vue-router";
+import {InterfaceInformationControllerService, InterfaceInvokeTestRequest,} from "../../../api";
 
 /**
  * 在线调用参数
@@ -24,7 +21,7 @@ const invokeP = reactive({
 const response = ref("");
 const onlineInvoke = async () => {
   let res = await InterfaceInformationControllerService.invokeUsingPost(
-    invokeP
+      invokeP
   );
   if (res.code === 0) {
     Message.success("调用成功");
@@ -95,7 +92,7 @@ const onDelete = async () => {
       <a-button type="primary">URL</a-button>
     </a-col>
     <a-col :span="20">
-      <a-input v-model="data.url" />
+      <a-input v-model="data.url"/>
     </a-col>
   </a-row>
   <a-row class="row">
@@ -103,44 +100,44 @@ const onDelete = async () => {
       <a-button aria-readonly="true" type="primary">Method</a-button>
     </a-col>
     <a-col :span="20">
-      <a-input v-model="data.method" />
+      <a-input v-model="data.method"/>
     </a-col>
   </a-row>
   <a-row class="row">
     <a-button type="outline">API功能介绍</a-button>
     <a-textarea
-      v-model="data.introduce"
-      :auto-size="{
+        v-model="data.introduce"
+        :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
-      style="margin-top: 20px"
+        style="margin-top: 20px"
     />
   </a-row>
   <a-row class="row">
     <a-button type="outline">请求参数</a-button>
     <a-textarea
-      v-model="data.requestHead"
-      :auto-size="{
+        v-model="data.requestHead"
+        :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
-      style="margin-top: 20px"
+        style="margin-top: 20px"
     />
   </a-row>
   <a-row class="row">
     <a-button type="outline">在线测试</a-button>
     <a-textarea
-      v-model="invokeP.requestParams"
-      :auto-size="{
+        v-model="invokeP.requestParams"
+        :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
-      :default-value="props.item.requestHead"
-      style="margin-top: 20px"
+        :default-value="props.item.requestHead"
+        style="margin-top: 20px"
     />
     <a-button type="text" @click="onlineInvoke">
-      <icon-send />
+      <icon-send/>
       测试
     </a-button>
   </a-row>
@@ -152,57 +149,57 @@ const onDelete = async () => {
   <a-row class="row">
     <a-button type="outline">响应参数</a-button>
     <a-textarea
-      v-model="data.responseHead"
-      :auto-size="{
+        v-model="data.responseHead"
+        :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
-      style="margin-top: 20px"
+        style="margin-top: 20px"
     />
   </a-row>
   <a-row class="row">
     <a-button type="outline">maven SDK</a-button>
     <a-textarea
-      v-model="data.maven"
-      :auto-size="{
+        v-model="data.maven"
+        :auto-size="{
         minRows: 5,
         maxRows: 8,
       }"
-      style="margin-top: 20px"
+        style="margin-top: 20px"
     />
   </a-row>
   <a-row class="row">
     <a-button type="outline">上传SDK</a-button>
     <a-upload
-      :data="{
+        :data="{
         id: data.id,
       }"
-      :with-credentials="true"
-      action="
+        :with-credentials="true"
+        action="
 http://localhost:8101/api/API/interfaceInfo/uploadSDK"
-      draggable
+        draggable
     />
   </a-row>
   <a-row class="row">
     <a-button
-      status="success"
-      style="margin: 0 10px"
-      type="primary"
-      @click="onSava"
-      >保存
+        status="success"
+        style="margin: 0 10px"
+        type="primary"
+        @click="onSava"
+    >保存
     </a-button>
     <a-button status="success" style="margin: 0 10px" @click="online"
-      >上线
+    >上线
     </a-button>
     <a-button status="danger" style="margin: 0 10px" @click="offline"
-      >下线
+    >下线
     </a-button>
     <a-button
-      status="danger"
-      style="margin: 0 10px"
-      type="primary"
-      @click="onDelete"
-      >删除
+        status="danger"
+        style="margin: 0 10px"
+        type="primary"
+        @click="onDelete"
+    >删除
     </a-button>
   </a-row>
 </template>

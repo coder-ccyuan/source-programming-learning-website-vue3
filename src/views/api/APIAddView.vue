@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { reactive } from "vue";
-import { Message } from "@arco-design/web-vue";
-import { useRouter } from "vue-router";
-import { InterfaceInformationControllerService } from "../../../interfaceApi";
+import {reactive} from "vue";
+import {Message} from "@arco-design/web-vue";
+import {useRouter} from "vue-router";
+import {InterfaceInformationControllerService} from "../../../api";
 
 /**
  * 在线调用参数
@@ -35,13 +35,13 @@ const onAdd = async () => {
 
 <template>
   <div id="apiAdd">
-    <a-divider />
+    <a-divider/>
     <a-row class="row">
       <a-col :span="2">
         <a-button type="primary">api名称</a-button>
       </a-col>
       <a-col :span="20">
-        <a-input v-model="data.name" />
+        <a-input v-model="data.name"/>
       </a-col>
     </a-row>
     <a-row class="row">
@@ -49,7 +49,7 @@ const onAdd = async () => {
         <a-button type="primary">URL</a-button>
       </a-col>
       <a-col :span="20">
-        <a-input v-model="data.url" />
+        <a-input v-model="data.url"/>
       </a-col>
     </a-row>
     <a-row class="row">
@@ -57,64 +57,64 @@ const onAdd = async () => {
         <a-button aria-readonly="true" type="primary">Method</a-button>
       </a-col>
       <a-col :span="20">
-        <a-input v-model="data.method" />
+        <a-input v-model="data.method"/>
       </a-col>
     </a-row>
     <a-row class="row">
       <a-button type="outline">API功能介绍</a-button>
       <a-textarea
-        v-model="data.introduce"
-        :auto-size="{
+          v-model="data.introduce"
+          :auto-size="{
           minRows: 5,
           maxRows: 8,
         }"
-        style="margin-top: 20px"
+          style="margin-top: 20px"
       />
     </a-row>
     <a-row class="row">
       <a-button type="outline">请求参数</a-button>
       <a-textarea
-        v-model="data.requestHead"
-        :auto-size="{
+          v-model="data.requestHead"
+          :auto-size="{
           minRows: 5,
           maxRows: 8,
         }"
-        style="margin-top: 20px"
+          style="margin-top: 20px"
       />
     </a-row>
     <a-row class="row">
       <a-button type="outline">响应参数</a-button>
       <a-textarea
-        v-model="data.responseHead"
-        :auto-size="{
+          v-model="data.responseHead"
+          :auto-size="{
           minRows: 5,
           maxRows: 8,
         }"
-        style="margin-top: 20px"
+          style="margin-top: 20px"
       />
     </a-row>
     <a-row class="row">
       <a-button type="outline">maven SDK</a-button>
       <a-textarea
-        v-model="data.maven"
-        :auto-size="{
+          v-model="data.maven"
+          :auto-size="{
           minRows: 5,
           maxRows: 8,
         }"
-        style="margin-top: 20px"
+          style="margin-top: 20px"
       />
     </a-row>
     <a-row class="row">
       <a-button type="outline">上传SDK</a-button>
-      <a-upload action="/" draggable />
+      <a-upload action="/" draggable/>
     </a-row>
     <a-row class="row">
       <a-button
-        status="success"
-        style="margin: 0 10px"
-        type="primary"
-        @click="onAdd"
-        >添加
+          status="success"
+          style="margin: 0 10px"
+          type="primary"
+          @click="onAdd"
+      >添加
       </a-button>
     </a-row>
   </div>

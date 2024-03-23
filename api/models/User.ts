@@ -5,16 +5,17 @@
 export type User = {
     accessKey?: string;
     createTime?: string;
-    email?: string;
-    gender?: number;
     id?: number;
     isDelete?: number;
-    nickname?: string;
-    password?: string;
-    phone?: string;
-    role?: number;
+    mpOpenId?: string;
     secretKey?: string;
-    state?: number;
-    username?: string;
+    unionId?: string;
+    updateTime?: string;
+    userAccount?: string;
+    userAvatar?: string;
+    userName?: string;
+    userPassword?: string;
+    userProfile?: string;
+    userRole?: string;
 };
 

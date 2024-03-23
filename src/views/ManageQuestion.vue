@@ -1,20 +1,20 @@
 <template>
   <div id="manageQ">
-    <a-divider />
+    <a-divider/>
     <a-table :columns="columns" :data="data" :pagination="false">
       <template #optional="{ record }">
         <a-button type="primary" @click="onUpdate(record)">更新</a-button>
         <span>|</span>
         <a-button status="danger" type="primary" @click="onDelete(record)"
-          >删除
+        >删除
         </a-button>
       </template>
       <template #tag="{ record }">
         <a-space>
           <a-tag
-            v-for="(tag, index) in record.tags"
-            :key="index"
-            :color="
+              v-for="(tag, index) in record.tags"
+              :key="index"
+              :color="
               tag === '简单'
                 ? 'green'
                 : tag === '中等'
@@ -23,16 +23,16 @@
                 ? 'red'
                 : 'cyan'
             "
-            >{{ tag }}
+          >{{ tag }}
           </a-tag>
         </a-space>
       </template>
     </a-table>
     <a-modal
-      v-model:visible="visible"
-      fullscreen
-      @cancel="handleCancel"
-      @ok="handleOk"
+        v-model:visible="visible"
+        fullscreen
+        @cancel="handleCancel"
+        @ok="handleOk"
     >
       <template #title> 修改题目</template>
       <div>
@@ -40,20 +40,20 @@
       </div>
     </a-modal>
     <a-pagination
-      v-model:current="pageParameters.current"
-      v-model:total="pageParameters.total"
-      :page-size="pageParameters.pageSize"
-      :show-total="true"
-      @change="onPageChange()"
+        v-model:current="pageParameters.current"
+        v-model:total="pageParameters.total"
+        :page-size="pageParameters.pageSize"
+        :show-total="true"
+        @change="onPageChange()"
     />
   </div>
 </template>
 
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import {onMounted, reactive, ref} from "vue";
 import UpdateQuestion from "@/components/UpdateQuestion.vue";
-import { Message } from "@arco-design/web-vue";
-import { QuestionControllerService } from "../../questionApi";
+import {Message} from "@arco-design/web-vue";
+import {QuestionControllerService} from "../../questionApi";
 
 const columns = [
   {
@@ -96,7 +96,7 @@ const SearchParameters = reactive({
 });
 const loadDate = async () => {
   const res = await QuestionControllerService.listQuestionVoByPageUsingPost(
-    SearchParameters
+      SearchParameters
   );
   data.value = res.data.records;
   pageParameters.total = res.data.total;

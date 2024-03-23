@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from "vue";
+import {onMounted, reactive, ref} from "vue";
 import APIMessage from "@/views/api/APIMessage.vue";
-import { InterfaceInformationControllerService } from "../../../interfaceApi";
+import {InterfaceInformationControllerService} from "../../../api";
 
 const queryP = reactive({
   method: "",
@@ -38,13 +38,13 @@ onMounted(() => {
 
 <template>
   <div id="api">
-    <a-divider />
+    <a-divider/>
     <a-affix :offsetTop="80" class="anchor">
       <a-anchor>
         <a-anchor-link
-          v-for="(item, index) in data"
-          :key="index"
-          :href="'#' + item.id"
+            v-for="(item, index) in data"
+            :key="index"
+            :href="'#' + item.id"
         >
           {{ item.name }}
         </a-anchor-link>
@@ -52,10 +52,10 @@ onMounted(() => {
     </a-affix>
     <a-collapse :default-active-key="[0]" accordion>
       <a-collapse-item
-        v-for="(item, index) in data"
-        :id="item.id"
-        :key="index"
-        :header="item.name"
+          v-for="(item, index) in data"
+          :id="item.id"
+          :key="index"
+          :header="item.name"
       >
         <APIMessage :item="item"></APIMessage>
       </a-collapse-item>

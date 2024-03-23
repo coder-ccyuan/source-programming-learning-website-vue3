@@ -5,7 +5,6 @@
 export type BaseResponse_string_ = {
     code?: number;
     data?: string;
-    description?: string;
     message?: string;
 };
 

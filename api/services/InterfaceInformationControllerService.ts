@@ -2,20 +2,21 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { BaseResponse_boolean_ } from '../models/BaseResponse_boolean_';
-import type { BaseResponse_List_InterfaceInformation_ } from '../models/BaseResponse_List_InterfaceInformation_';
-import type { BaseResponse_string_ } from '../models/BaseResponse_string_';
-import type { DeleteRequest } from '../models/DeleteRequest';
-import type { InterfaceInformation } from '../models/InterfaceInformation';
-import type { InterfaceInformationAddRequest } from '../models/InterfaceInformationAddRequest';
-import type { InterfaceInformationOfflineRequest } from '../models/InterfaceInformationOfflineRequest';
-import type { InterfaceInformationOlineRequest } from '../models/InterfaceInformationOlineRequest';
-import type { InterfaceInformationQueryRequest } from '../models/InterfaceInformationQueryRequest';
-import type { InterfaceInformationUpdateRequest } from '../models/InterfaceInformationUpdateRequest';
-import type { InterfaceInvokeTestRequest } from '../models/InterfaceInvokeTestRequest';
-import type { CancelablePromise } from '../core/CancelablePromise';
-import { OpenAPI } from '../core/OpenAPI';
-import { request as __request } from '../core/request';
+import type {BaseResponse_boolean_} from '../models/BaseResponse_boolean_';
+import type {BaseResponse_List_InterfaceInformation_} from '../models/BaseResponse_List_InterfaceInformation_';
+import type {BaseResponse_string_} from '../models/BaseResponse_string_';
+import type {DeleteRequest} from '../models/DeleteRequest';
+import type {InterfaceInformation} from '../models/InterfaceInformation';
+import type {InterfaceInformationAddRequest} from '../models/InterfaceInformationAddRequest';
+import type {InterfaceInformationOfflineRequest} from '../models/InterfaceInformationOfflineRequest';
+import type {InterfaceInformationOlineRequest} from '../models/InterfaceInformationOlineRequest';
+import type {InterfaceInformationQueryRequest} from '../models/InterfaceInformationQueryRequest';
+import type {InterfaceInformationUpdateRequest} from '../models/InterfaceInformationUpdateRequest';
+import type {InterfaceInvokeTestRequest} from '../models/InterfaceInvokeTestRequest';
+import type {CancelablePromise} from '../core/CancelablePromise';
+import {OpenAPI} from '../core/OpenAPI';
+import {request as __request} from '../core/request';
+
 export class InterfaceInformationControllerService {
     /**
      * add
@@ -29,7 +30,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/add',
+            url: '/api/interfaceInfo/add',
             body: addRequest,
             errors: {
                 401: `Unauthorized`,
@@ -38,6 +39,7 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * delete
      * @param deleteRequest deleteRequest
@@ -50,7 +52,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/delete',
+            url: '/api/interfaceInfo/delete',
             body: deleteRequest,
             errors: {
                 401: `Unauthorized`,
@@ -59,6 +61,30 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
+    /**
+     * downloadSDK
+     * @param id id
+     * @returns any OK
+     * @throws ApiError
+     */
+    public static downloadSdkUsingGet(
+        id?: number,
+    ): CancelablePromise<any> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/api/interfaceInfo/downloadSDK',
+            query: {
+                'id': id,
+            },
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
     /**
      * invoke
      * @param invokeTestRequest invokeTestRequest
@@ -71,7 +97,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_string_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/invoke',
+            url: '/api/interfaceInfo/invoke',
             body: invokeTestRequest,
             errors: {
                 401: `Unauthorized`,
@@ -80,6 +106,7 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * offline
      * @param offlineRequest offlineRequest
@@ -92,7 +119,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/offline',
+            url: '/api/interfaceInfo/offline',
             body: offlineRequest,
             errors: {
                 401: `Unauthorized`,
@@ -101,6 +128,7 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * online
      * @param olineRequest olineRequest
@@ -113,7 +141,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/online',
+            url: '/api/interfaceInfo/online',
             body: olineRequest,
             errors: {
                 401: `Unauthorized`,
@@ -122,32 +150,24 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * query
-     * @param id
-     * @param method
-     * @param name
-     * @param status
-     * @param url
+     * @param method method
+     * @param name name
      * @returns BaseResponse_List_InterfaceInformation_ OK
      * @throws ApiError
      */
     public static queryUsingGet(
-        id?: number,
         method?: string,
         name?: string,
-        status?: number,
-        url?: string,
     ): CancelablePromise<BaseResponse_List_InterfaceInformation_> {
         return __request(OpenAPI, {
             method: 'GET',
-            url: '/interfaceInfo/query/list',
+            url: '/api/interfaceInfo/query/list',
             query: {
-                'id': id,
                 'method': method,
                 'name': name,
-                'status': status,
-                'url': url,
             },
             errors: {
                 401: `Unauthorized`,
@@ -156,6 +176,7 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * queryByUrl
      * @param queryRequest queryRequest
@@ -168,7 +189,7 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<InterfaceInformation | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/query/url',
+            url: '/api/interfaceInfo/query/url',
             body: queryRequest,
             errors: {
                 401: `Unauthorized`,
@@ -177,6 +198,7 @@ export class InterfaceInformationControllerService {
             },
         });
     }
+
     /**
      * update
      * @param updateRequest updateRequest
@@ -189,8 +211,35 @@ export class InterfaceInformationControllerService {
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
             method: 'POST',
-            url: '/interfaceInfo/update',
+            url: '/api/interfaceInfo/update',
             body: updateRequest,
+            errors: {
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                404: `Not Found`,
+            },
+        });
+    }
+
+    /**
+     * upLoadSDK
+     * @param file
+     * @param id
+     * @returns BaseResponse_boolean_ OK
+     * @returns any Created
+     * @throws ApiError
+     */
+    public static upLoadSdkUsingPost(
+        file?: Blob,
+        id?: number,
+    ): CancelablePromise<BaseResponse_boolean_ | any> {
+        return __request(OpenAPI, {
+            method: 'POST',
+            url: '/api/interfaceInfo/uploadSDK',
+            query: {
+                'file': file,
+                'id': id,
+            },
             errors: {
                 401: `Unauthorized`,
                 403: `Forbidden`,

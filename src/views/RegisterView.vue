@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
-import { UserControllerService, UserRegisterRequest } from "../../userApi";
+import {reactive} from "vue";
+import {useRouter} from "vue-router";
+import {UserControllerService, UserRegisterRequest} from "../../api";
 
 const form = reactive({
   userAccount: "",
@@ -24,20 +24,20 @@ const onHandleSubmit = async () => {
     <h1>用户注册</h1>
     <a-form :model="form" :style="{ width: '600px' }" @submit="onHandleSubmit">
       <a-form-item field="userAccount" label="用户账号">
-        <a-input v-model="form.userAccount" placeholder="请输入用户名" />
+        <a-input v-model="form.userAccount" placeholder="请输入用户名"/>
       </a-form-item>
       <a-form-item field="userPassword" label="用户密码">
         <a-input
-          v-model="form.userPassword"
-          placeholder="请输入密码"
-          type="password"
+            v-model="form.userPassword"
+            placeholder="请输入密码"
+            type="password"
         />
       </a-form-item>
       <a-form-item field="checkPassword" label="确认密码">
         <a-input
-          v-model="form.checkPassword"
-          placeholder="请再次输入密码"
-          type="password"
+            v-model="form.checkPassword"
+            placeholder="请再次输入密码"
+            type="password"
         />
       </a-form-item>
       <a-row class="grid-demo">

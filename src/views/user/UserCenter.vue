@@ -3,8 +3,8 @@
     <a-layout>
       <a-layout-sider :style="{ marginRight: '20px;' }">
         <a-menu
-          :style="{ width: '200px', height: '550px' }"
-          @menuItemClick="menuItemClick"
+            :style="{ width: '200px', height: '550px' }"
+            @menuItemClick="menuItemClick"
         >
           <template #icon>
             <icon-apps></icon-apps>
@@ -17,15 +17,15 @@
       <a-layout-content>
         <div class="content">
           <h2>用户中心</h2>
-          <router-view />
+          <router-view/>
         </div>
       </a-layout-content>
     </a-layout>
   </div>
 </template>
 <script lang="ts" setup>
-import { routes } from "@/router/routes";
-import { useRouter } from "vue-router";
+import {routes} from "@/router/routes";
+import {useRouter} from "vue-router";
 
 const router = useRouter();
 const visibleRoutes = routes.filter((item, index) => {

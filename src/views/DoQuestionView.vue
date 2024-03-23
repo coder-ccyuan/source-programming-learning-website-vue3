@@ -1,15 +1,11 @@
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from "vue";
+import {onMounted, reactive, ref} from "vue";
 import CodeEditor from "@/components/CodeEditor.vue";
 import OnlyReadMD from "@/components/OnlyReadMD.vue";
 import userStore from "@/store/userStore";
-import { Message } from "@arco-design/web-vue";
-import { useRoute } from "vue-router";
-import {
-  QuestionControllerService,
-  QuestionSubmitControllerService,
-  QuestionVO,
-} from "../../questionApi";
+import {Message} from "@arco-design/web-vue";
+import {useRoute} from "vue-router";
+import {QuestionControllerService, QuestionSubmitControllerService, QuestionVO,} from "../../api";
 
 const route = useRoute();
 const id = route.query.id as unknown as number;
@@ -60,28 +56,17 @@ onMounted(() => {
   question.judgeConfig = props.record.judgeConfig;
   question.tags = props.record.tags;
 });*/
-const getQS = async (id: number) => {
-  var res = await QuestionSubmitControllerService.getQuestionVoByIdUsingGet1(
-    id
-  );
-  var judgeInfo = res.data.judgeInfo;
-  if (judgeInfo == null) {
-    alert("编译失败");
-    return;
-  }
-  responseContent.memories = judgeInfo.memories;
-  responseContent.times = judgeInfo.times;
-  responseContent.messages = judgeInfo.messages;
-  visible.value = true;
-};
 const onSubmit = async () => {
   let res = await QuestionSubmitControllerService.addQuestionSubmitUsingPost(
-    form
+      form
   );
   if (res.code === 0) {
     Message.success("提交成功");
     const judgeInfo = res.data.judgeInfo;
-    getQS(res.data);
+    responseContent.memories = judgeInfo.memories;
+    responseContent.times = judgeInfo.times;
+    responseContent.messages = judgeInfo.messages;
+    visible.value = true;
   } else {
     alert("提交失败" + res.message);
   }
@@ -101,10 +86,10 @@ const handleOk = () => {
         <h1>{{ question.title }}</h1>
         <a-space>
           <a-tag
-            v-for="(tag, index) of question.tags"
-            :key="index"
-            color="green"
-            >{{ tag }}
+              v-for="(tag, index) of question.tags"
+              :key="index"
+              color="green"
+          >{{ tag }}
           </a-tag>
         </a-space>
         <OnlyReadMD :value="question.content"></OnlyReadMD>
@@ -117,22 +102,22 @@ const handleOk = () => {
         <h2>限制</h2>
         <a-list>
           <a-list-item
-            >时间限制：{{ question.judgeConfig?.timeLimit }}ms
+          >时间限制：{{ question.judgeConfig?.timeLimit }}ms
           </a-list-item>
           <a-list-item
-            >内存限制：{{ question.judgeConfig?.memoryLimit }}kb
+          >内存限制：{{ question.judgeConfig?.memoryLimit }}kb
           </a-list-item>
           <a-list-item
-            >堆栈限制：{{ question.judgeConfig?.stackLimit }}kb
+          >堆栈限制：{{ question.judgeConfig?.stackLimit }}kb
           </a-list-item>
         </a-list>
       </div>
     </a-layout-sider>
     <a-layout-content>
       <div>
-        <CodeEditor :changeCode="changeCode" :code="form.code" />
+        <CodeEditor :changeCode="changeCode" :code="form.code"/>
         <a-button style="float: right" type="primary" @click="onSubmit"
-          >提交
+        >提交
         </a-button>
       </div>
     </a-layout-content>
@@ -141,7 +126,7 @@ const handleOk = () => {
     <template #title> 判题结果</template>
     <div v-for="(item, index) in responseContent.times" :key="index">
       time: {{ item + "---" }} memory: null --- result:
-      {{ responseContent.messages[index] }} <br />
+      {{ responseContent.messages[index] }} <br/>
     </div>
   </a-modal>
 </template>
